@@ -1,0 +1,22 @@
+var mysql = require("mysql");
+var conn = mysql.createConnection(DBoptions);
+
+var mData = function(){
+	all: ''
+};
+
+//==============================================
+//model:
+
+mData.prototype.checkLogin = function(cb, cb_arg, req) {
+	self = this;
+	conn.query('SELECT * from tUsers where email = /'' + req.body.email + '/'' , function(err, rows, fields) {
+		if (err) throw err;
+		self.all = rows;
+		cb(cb_arg);
+	});
+};
+
+module.exports = mData;
+
+
