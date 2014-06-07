@@ -21,7 +21,6 @@ app.all('*', function(req, res, next) {
 
 // Routes
 app.get('/', function(req, res) {
-	console.log (req);
 	res.json('hello');
 });
 
