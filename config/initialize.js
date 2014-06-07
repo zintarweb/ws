@@ -6,5 +6,5 @@ DBoptions = {
 };
 
 server = {
-	appFolder: 'lmedwsexpress'
+	appFolder: ''
 }
