@@ -8,7 +8,7 @@ var cData = require('./login.m.js');
 var thisData = new cData();
 thisData.all = "init";
 
-var callback = function(res) {
+var callback = function(res) { 
     var output = thisData.all;
     if (output == "init") return false;
     res.json(output);
@@ -19,6 +19,7 @@ var callback = function(res) {
 //controller:
 
 app.post('/login', function(req, res) {
+console.log(req);
 	thisData.checkLogin(callback, res, req);
 });
 

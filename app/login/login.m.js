@@ -10,9 +10,12 @@ var mData = function(){
 
 mData.prototype.checkLogin = function(cb, cb_arg, req) {
 	self = this;
+	console.log(req.params);
+	
 	var data = {
 		Email: req.body.email
 	}
+	console.log (data);
 	conn.query('SELECT * from tUsers where ? ', data , function(err, rows, fields) {
 		if (err) throw err;
 		self.all = rows;
