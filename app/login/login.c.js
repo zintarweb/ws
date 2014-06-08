@@ -19,8 +19,13 @@ var callback = function(res) {
 //controller:
 
 app.post('/login', function(req, res) {
-console.log(req);
 	thisData.checkLogin(callback, res, req);
+});
+app.get('/logintest', function(req, res) {
+	thisData.checkLoginTest(callback, res, req);
+});
+app.post('/logintest', function(req, res) {
+	thisData.checkLoginTest(callback, res, req);
 });
 
 module.exports = app;

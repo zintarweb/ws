@@ -19,8 +19,8 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 	
 	data = {
 		UserType: 1,
-		CreationDate: '1/1/1990',
-		LastModified: '1/1/1990',
+		CreationDate: '2014-04-01 13:00:00',
+		LastModified: '2014-04-01 13:00:00',
 		Fname: 'test',
 		Lname: 'test',
 		Email : params.email,
