@@ -13,6 +13,6 @@ module.exports = function routes() {
 	this.match('message', 'message#messageGetAll', { via: ['get', 'options']});
 	this.match('message/:id', 'message#messageGetByID', { via: 'get'});
 
-	this.match('register', 'register#registerUser', { via: ['get', 'post']});
+	this.match('register', 'register#registerUser', { via: ['post']});
 
 }

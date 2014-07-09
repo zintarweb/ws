@@ -1,0 +1,2 @@
+#ignore these files and directories when sync'ing via git
+node_modules/
