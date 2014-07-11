@@ -1,5 +1,7 @@
 
 express = require('express');
+utils = require('../utils/utils.js');
+
 app = module.exports = express();
 
 var cData = require('./users.m.js');
@@ -11,9 +13,11 @@ var callback = function(res) {
     if (output == "init") return false;
 
 // CORS
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+//  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+
+	utils.cors(res);
     res.json(output);
     return true;
 }
