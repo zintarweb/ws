@@ -13,11 +13,11 @@ var callback = function(res) {
     if (output == "init") return false;
 
 // CORS
-//  res.header("Access-Control-Allow-Origin", "*");
-//  res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
-//  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 
-	utils.cors(res);
+//	utils.cors(res);
     res.json(output);
     return true;
 }
