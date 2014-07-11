@@ -10,6 +10,10 @@ var callback = function(res) {
     var output = thisData.all;
     if (output == "init") return false;
 
+// CORS
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
     res.json(output);
     return true;
 }
