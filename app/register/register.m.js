@@ -34,6 +34,7 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 		if (err) throw err;
 		if (!rows) {
 			sql = 'insert into tUsers set ? '
+			console.log (sql);
 			conn.query(sql, data, function(err, rows, fields) {
 				if (err) throw err;
 				self.all = rows;
