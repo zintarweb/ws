@@ -1,4 +1,4 @@
-DBoptions = {
+DBoptions_dev = {
     host     : 'localhost',
     user     : 'root',
     password : 'lampshade!',
@@ -11,6 +11,8 @@ DBoptions_prod = {
     password : '075d6dd9',
     database : 'heroku_dd220e7b2a3aa7f'
 };
+
+DBoptions = DBoptions_prod;
 
 server = {
 	appFolder: ''
