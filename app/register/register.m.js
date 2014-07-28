@@ -16,7 +16,7 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 	self = this;
 	var sql = "";
 	var params = req.body;
-	
+	var exists;
 	data = {
 		UserType: 1,
 		CreationDate: '2014-04-01 13:00:00',
@@ -30,9 +30,13 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 	}
 
 	sql = 'select UserID from tUsers where email = ? '	
-	conn.query(sql, data, function(err, rows, fields) {
+	conn.query(sql, params.email, function(err, rows, fields) {
 		if (err) throw err;
-		if (!rows) {
+		if (rows) {
+			exists = true;
+		};
+	});
+	if (!exists) {
 			sql = 'insert into tUsers set ? '
 			console.log (sql);
 			conn.query(sql, data, function(err, rows, fields) {
@@ -40,8 +44,7 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 				self.all = rows;
 				cb(cb_arg);
 			})
-		};
-	});
+	}
 };
 
 mData.prototype.getByID = function(cb, cb_arg) {
