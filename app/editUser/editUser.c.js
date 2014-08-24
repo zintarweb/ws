@@ -1,0 +1,34 @@
+// LMED Web Service
+// handler for editUser requests 
+
+express = require('express');
+app = module.exports = express();
+
+var cData = require('./editUser.m.js');
+var thisData = new cData();
+thisData.all = "init";
+
+var callback = function(res) {
+    var output = thisData.all;
+    if (output == "init") return false;
+    res.json(output);
+    return true;
+}
+
+//==============================================
+//controller:
+app.post('/editUser', function(req, res){
+
+	thisData.updateUser(callback, res, req);
+});
+app.get('/editUser', function(req, res){
+console.log(req.body);
+	thisData.updateUser(callback, res, req);
+});
+
+app.get('/users/:id', function(req, res) {
+	thisData.id = req.params.id;
+	thisData.getByID(callback, res);
+});
+
+module.exports = app;

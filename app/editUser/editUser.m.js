@@ -12,11 +12,12 @@ mData.prototype.mtest = function() {
 	self = this;
 };
 
-mData.prototype.registerUser = function(cb, cb_arg, req) {
+mData.prototype.updateUser = function(cb, cb_arg, req) {
 	self = this;
 	var sql = "";
 	var params = req.body;
 	var exists;
+	var userid = params.userid; 
 	data = {
 		UserType: 1,
 		CreationDate: '2014-04-01 13:00:00',
@@ -28,18 +29,22 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 		Secret: params.secret,
 		Phone: params.phone
 	}
-
-	sql = 'select UserID from tUsers where email = ? '	
-	conn.query(sql, params.email, function(err, rows, fields) {
-		if (err) throw err;
-		if (rows) {
-			exists = true;
-		};
-	});
-	if (!exists) {
-			sql = 'insert into tUsers set ? '
+	if (userid) {
+		sql = 'select UserID from tUsers where email = ? '	
+		conn.query(sql, params.email, function(err, rows, fields) {
+			if (err) throw err;
+			if (rows) {
+				exists = true;
+			};
+		});
+	} else {
+		self.all = "No data";
+		cb(cb_arg);
+	}
+	if (exists) {
+			sql = 'update tUsers set ? where UserID = ?'
 			console.log (sql);
-			conn.query(sql, data, function(err, rows, fields) {
+			conn.query(sql, data, userid, function(err, rows, fields) {
 				if (err) throw err;
 				self.all = rows;
 				cb(cb_arg);

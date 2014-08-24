@@ -34,6 +34,9 @@ app.get('/', function(req, res) {
 var now = require('./app/now/now.c.js');
 app.use(now);
 
+var editUser = require('./app/editUser/editUser.c.js');
+app.use(editUser);
+
 var users = require('./app/users/users.c.js');
 app.use(users);
 var profiles = require('./app/profiles/profiles.c.js');
