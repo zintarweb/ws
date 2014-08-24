@@ -18,16 +18,13 @@ var callback = function(res) {
 //==============================================
 //controller:
 app.post('/editUser', function(req, res){
-console.log(req.params.id);
 	thisData.updateUser(callback, res, req, console);
 });
 app.get('/editUser', function(req, res){
-console.log(req.params.userid);
 	thisData.updateUser(callback, res, req, console);
 });
 
 app.get('/editUser/:id', function(req, res) {
-console.log(req.params.id);
 	thisData.id = req.params.id;
 	thisData.getByID(callback, res);
 });
