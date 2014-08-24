@@ -10,12 +10,6 @@ http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-
-app.configure(function(){
-  app.use(express.bodyParser());
-  app.use(app.router);
-});
-
 //=========================================================================
 // CORS
 app.all('*', function(req, res, next) {
@@ -24,6 +18,12 @@ app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
   next();
  });
+
+app.configure(function(){
+  app.use(express.bodyParser());
+  app.use(app.router);
+});
+
 
 
 // Routes
