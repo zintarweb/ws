@@ -45,6 +45,7 @@ console.log (userid > 0);
 		self.all = data;
 		cb(cb_arg);
 	}
+console.log ("here");
 	if (exists) {
 			sql = 'update tUsers set ? where UserID = ?'
 			console.log (sql);
