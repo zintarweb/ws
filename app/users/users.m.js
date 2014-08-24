@@ -17,7 +17,7 @@ mData.prototype.getAll = function(cb, cb_arg) {
 	conn.query('SELECT * from tUsers', function(err, rows, fields) {
 		if (err) throw err;
 		self.all = rows;
-		conn.release();
+		conn.end();
 		cb(cb_arg);
 	});
 };
@@ -27,7 +27,7 @@ mData.prototype.getByID = function(cb, cb_arg) {
 	conn.query('SELECT * from tUsers where UserID = ' + self.id, function(err, rows, fields) {
 		if (err) throw err;
 		self.all = rows;
-		conn.release();
+		conn.end();
 		cb(cb_arg);
 	});
 };
