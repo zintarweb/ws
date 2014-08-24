@@ -20,7 +20,7 @@ mData.prototype.updateUser = function(cb, cb_arg, req, console) {
 	var userid = params.userid; 
 
 console.log (req.body);
-console.log (userid);
+console.log (userid > 0);
 
 	data = {
 		UserType: 1,
