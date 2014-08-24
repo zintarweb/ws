@@ -12,12 +12,15 @@ mData.prototype.mtest = function() {
 	self = this;
 };
 
-mData.prototype.updateUser = function(cb, cb_arg, req) {
+mData.prototype.updateUser = function(cb, cb_arg, req, console) {
 	self = this;
 	var sql = "";
 	var params = req.body;
 	var exists;
 	var userid = params.userid; 
+
+console.log (req.body);
+
 	data = {
 		UserType: 1,
 		CreationDate: '2014-04-01 13:00:00',
@@ -29,8 +32,8 @@ mData.prototype.updateUser = function(cb, cb_arg, req) {
 		Secret: params.secret,
 		Phone: params.phone
 	}
-	if (userid) {
-		sql = 'select UserID from tUsers where email = ? '	
+	if (userid > 0) {
+		sql = 'select UserID from tUsers where Email = ? '	
 		conn.query(sql, params.email, function(err, rows, fields) {
 			if (err) throw err;
 			if (rows) {
@@ -38,7 +41,7 @@ mData.prototype.updateUser = function(cb, cb_arg, req) {
 			};
 		});
 	} else {
-		self.all = "No data";
+		self.all = data;
 		cb(cb_arg);
 	}
 	if (exists) {
