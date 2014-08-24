@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var conn = mysql.createConnection(DBoptions);
+var conn = mysql.createPool(DBoptions);
 
 var mData = function(){
 	all: ''
