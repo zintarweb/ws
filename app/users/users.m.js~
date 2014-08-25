@@ -18,7 +18,6 @@ mData.prototype.getAll = function(cb, cb_arg) {
 		if (err) throw err;
 		self.all = rows;
 		cb(cb_arg);
-		conn.end();
 	});
 
 };
@@ -29,7 +28,6 @@ mData.prototype.getByID = function(cb, cb_arg) {
 		if (err) throw err;
 		self.all = rows;
 		cb(cb_arg);
-		conn.end();
 	});
 };
 
