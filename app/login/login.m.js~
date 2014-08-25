@@ -28,8 +28,7 @@ mData.prototype.checkLogin = function(cb, cb_arg, req) {
 	self = this;
 	
 	var data = {
-		Email: req.body.email,
-		Secret: req.body.secret
+		Email: req.body.email
 	}
 	conn.query('SELECT * from tUsers where ? ', data , function(err, rows, fields) {
 		if (err) throw err;
