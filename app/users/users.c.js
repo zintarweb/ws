@@ -1,6 +1,5 @@
 
 express = require('express');
-utils = require('../utils/utils.js');
 
 app = module.exports = express();
 

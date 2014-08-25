@@ -1,7 +1,8 @@
 var mysql = require("mysql");
 var conn = mysql.createPool(DBoptions);
  
-conn.replaceClientOnDisconnect(conn);
+var utils = require("../utils/utils.js");
+//replaceClientOnDisconnect(conn);
 
 var mData = function(){
 	all: ''
