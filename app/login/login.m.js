@@ -8,6 +8,13 @@ var mData = function(){
 	all: ''
 };
 
+var nullRecords = {
+	exists: '0',
+	Email: '',
+	UserID: '',
+	Fname: '',
+	Lname: ''
+}
 //==============================================
 //model:
 
@@ -31,11 +38,20 @@ mData.prototype.checkLogin = function(cb, cb_arg, req) {
 		Email: req.body.email,
 		Secret: req.body.secret
 	}
-	conn.query('SELECT * from tUsers where ? ', data , function(err, rows, fields) {
-		if (err) throw err;
-		self.all = rows;
+	var sql = 'SELECT "1" as "exists", UUID() as id, UserID as userid, "guest" as role, Fname, Lname, Email from tUsers where Email = ? and Secret = ? ';
+	var params = [data.Email,data.Secret];
+	sql = mysql.format(sql, params);
+	conn.query(sql, function(err, rows, fields) {
+		if (err) {
+			throw err;
+		}
+		if (rows[0]) {
+			self.all = rows;
+		} else
+			self.all = nullRecords;
 		cb(cb_arg);
 	});
+
 };
 
 module.exports = mData;

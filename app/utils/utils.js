@@ -1,6 +1,6 @@
-var utils = function() {
+var utils = function() {};
+var mysql = require("mysql");
 
-}
 utils.replaceClientOnDisconnect = function(client) {
   client.on("error", function (err) {
     if (!err.fatal) {
@@ -16,10 +16,12 @@ utils.replaceClientOnDisconnect = function(client) {
     // something more advanced with your connection configuration, then 
     // you should check carefully as to whether this is actually going to do
     // what you think it should do.
-    client = mysql.createPool(client.config);
-    replaceClientOnDisconnect(client);
-    connection.connect(function (error) {
+    client = mysql.createConnection(client.config);
+    utils.replaceClientOnDisconnect(client);
+    client.connect(function (error) {
       if (error) {
+console.log("error");
+console.trace();
         // Well, we tried. The database has probably fallen over.
         // That's fairly fatal for most applications, so we might as
         // call it a day and go home.
