@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var conn = mysql.createConnection(DBoptions);
+var conn = mysql.createPool(DBoptions);
 
 var mData = function(){
 	all: ''
@@ -18,9 +18,9 @@ mData.prototype.registerUser = function(cb, cb_arg, req) {
 	var params = req.body;
 	var exists;
 	data = {
-		UserType: 1,
-		CreationDate: '2014-04-01 13:00:00',
-		LastModified: '2014-04-01 13:00:00',
+		UserType: *,
+		CreationDate: new Date(),
+		LastModified: new Date(),
 		Fname: params.fname,
 		Lname: params.lname,
 		Email : params.email,

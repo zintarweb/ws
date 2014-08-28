@@ -18,9 +18,10 @@ mData.prototype.updateProfile = function(cb, cb_arg, req) {
 	console.log (params);
 	
 	data = {
-		ProfileType: 1,
-		CreationDate: '2014-04-01 13:00:00',
-		LastModified: '2014-04-01 13:00:00',
+		UserID: params.UserID,
+		ProfileType: params.profileType,
+		CreationDate: new Date(),
+		LastModified: new Date(),
 		Title: params.name,
 		Description: params.description
 		}
@@ -38,14 +39,22 @@ console.log(pid);
 		if (pid == 0) 
 			sql = 'insert into tProfiles set ? ';
 console.log(sql);
-			conn.query(sql, [data,pid], function(err, rows, fields) {
+
+		conn.query(sql, [data,pid], function(err, rows, fields) {
 			if (err) throw err;
 			self.all = rows;
 		});
+
 		sql = 'select profileid from tProfiles where title=? and description=? '
 		conn.query(sql, [data.Title, data.Description], function(err, rows, fields) {
 			if (err) throw err;
 			self.all = rows;
+			if (rows[0].num > 0)
+				pid = rows[0].profileid;
+		});
+		sql = 'insert into tUserProfiles select ?, ?'
+		conn.query(sql, [data.UserID, pid],function(err, rows, fields) {
+			if (err) throw err;
 		});
 		cb(cb_arg);
 		

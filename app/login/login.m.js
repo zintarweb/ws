@@ -38,7 +38,7 @@ mData.prototype.checkLogin = function(cb, cb_arg, req) {
 		Email: req.body.email,
 		Secret: req.body.secret
 	}
-	var sql = 'SELECT "1" as "exists", UUID() as id, UserID as userid, "guest" as role, Fname, Lname, Email from tUsers where Email = ? and Secret = ? ';
+	var sql = 'SELECT "1" as "exists", UUID() as id, UserID as userid, UserType as role, Fname, Lname, Email from tUsers where Email = ? and Secret = ? ';
 	var params = [data.Email,data.Secret];
 	sql = mysql.format(sql, params);
 	conn.query(sql, function(err, rows, fields) {

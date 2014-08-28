@@ -22,12 +22,12 @@ mData.prototype.updateUser = function(cb, cb_arg, req, console) {
 	data = {
 		UserType: 1,
 		CreationDate: '2014-04-01 13:00:00',
-		LastModified: '2014-04-01 13:00:00',
+		LastModified: new Date(),
 		Fname: params.fname,
 		Lname: params.lname,
 		Email : params.email,
-		Login: params.email,
-		Secret: params.secret,
+		//Login: params.email,
+		//Secret: params.secret,
 		Phone: params.phone
 	}
 	if (params.email) {

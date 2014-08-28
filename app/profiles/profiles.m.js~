@@ -2,7 +2,7 @@
 // Profile model
 
 var mysql = require("mysql");
-var conn = mysql.createConnection(DBoptions);
+var conn = mysql.createPool(DBoptions);
 
 var mData = function(){
 	all: ''
@@ -18,9 +18,9 @@ mData.prototype.updateProfile = function(cb, cb_arg, req) {
 	console.log (params);
 	
 	data = {
-		ProfileType: 1,
-		CreationDate: '2014-04-01 13:00:00',
-		LastModified: '2014-04-01 13:00:00',
+		ProfileType: params.profileType,
+		CreationDate: new Date(),
+		LastModified: new Date(),
 		Title: params.name,
 		Description: params.description
 		}
