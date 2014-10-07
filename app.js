@@ -45,6 +45,9 @@ var register = require('./app/register/register.c.js');
 app.use(register);
 var login = require('./app/login/login.c.js');
 app.use(login);
+var upload = require('./app/upload/upload.c.js');
+app.use(upload);
+
 
 
 
